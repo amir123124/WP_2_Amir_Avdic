@@ -1,0 +1,106 @@
+<div class="bg">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="calendar-wrap">
+  <div class="calendar-card">
+
+    <!-- Logo / branding -->
+    <div class="card-logo">
+      <div class="logo-emblem">
+        <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+      </div>
+      <div class="logo-text">
+        <strong>IPI Akademija Tuzla</strong>
+        <span>Internacionalna poslovno-informaciona akademija</span>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="card-heading">
+      <h1>Kalendar</h1>
+      <p class="subtitle">Pratite važne datume, sastanke i prekretnice</p>
+    </div>
+
+    <!-- Date input -->
+    <div class="date-input-section">
+      <div class="date-label">
+        <span>📆</span>
+        <span>Odaberite važan datum</span>
+      </div>
+      <div class="date-input-wrapper">
+        <input
+          class="date-input"
+          type="date"
+          [(ngModel)]="selectedDate"
+          [min]="getTodayDate()"
+        />
+        <div class="calendar-icon">📅</div>
+      </div>
+    </div>
+
+    <!-- Save button -->
+    <button
+      class="save-btn"
+      (click)="save()"
+      [disabled]="!selectedDate">
+      <span class="save-btn-accent"></span>
+      <span>Sačuvaj u Kalendar</span>
+    </button>
+
+    <!-- Success message -->
+    <div class="success-message" *ngIf="message">
+      <span>✅</span>
+      <span>{{ message }}</span>
+    </div>
+
+    <!-- Saved dates -->
+    <div class="dates-section" *ngIf="dates.length > 0">
+      <div class="dates-header">
+        <div class="dates-title">
+          <span>Sačuvani Datumi</span>
+          <span class="dates-count">{{ dates.length }}</span>
+        </div>
+        <button class="clear-btn" (click)="clearDates()">
+          <span>🗑️</span>
+          <span>Obriši Sve</span>
+        </button>
+      </div>
+
+      <div class="dates-list">
+        <div
+          class="date-item"
+          *ngFor="let d of dates; let i = index"
+          [style.animation-delay]="i * 0.1 + 's'">
+          <div class="date-content">
+            <div class="date-display">
+              <span>📌</span>
+              <span>{{ formatDate(d) }}</span>
+            </div>
+            <div class="date-meta">{{ getDaysUntil(d) }}</div>
+            <button class="remove-date-btn" (click)="remove(i)">
+              <span>✖</span>
+              <span>Ukloni</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-dates" *ngIf="dates.length === 0">
+      <div class="empty-icon">📅</div>
+      <div class="empty-text">
+        <p>Još nema sačuvanih datuma</p>
+        <p style="font-size: 13px; margin-top: 6px; opacity: 0.7;">Vaši važni datumi će se pojaviti ovdje</p>
+      </div>
+    </div>
+
+    <!-- Back button -->
+    <button class="back-btn" routerLink="/dashboard">
+      <span>←</span>
+      <span>Nazad na Kontrolnu Tablu</span>
+    </button>
+
+  </div>
+</div>
