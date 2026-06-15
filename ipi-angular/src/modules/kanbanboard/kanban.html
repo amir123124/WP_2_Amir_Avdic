@@ -1,0 +1,86 @@
+<div class="kanban-page">
+  <div class="kanban-wrapper">
+
+    <header class="kanban-header">
+      <div class="title-zone">
+        <span class="badge">Student Fun Zone</span>
+        <h1>Mini Kanban Ploča</h1>
+        <p>Organizujte studentske obaveze i zadatke</p>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-add" (click)="addTask()">＋ Dodaj zadatak</button>
+        <button class="btn btn-png" (click)="saveAsPng()">↓ PNG</button>
+        <button class="btn btn-pdf" (click)="saveAsPdf()">↓ PDF</button>
+        <button class="btn btn-mail" (click)="toggleEmailPopup()">✉ Pošalji</button>
+        <button class="btn btn-clear" (click)="clearBoard()">✕ Očisti</button>
+      </div>
+    </header>
+
+    <main class="kanban-board" #kanbanBoard>
+      <div class="kanban-column" *ngFor="let col of columns" [id]="col.id">
+        <div class="column-header" [ngClass]="col.colorClass">
+          <h3>{{ col.title }}</h3>
+          <span class="task-count">{{ col.tasks.length }}</span>
+        </div>
+
+        <div
+          class="column-tasks"
+          (dragover)="onDragOver($event)"
+          (drop)="onDrop($event, col)">
+
+          <div
+            class="task-card"
+            *ngFor="let task of col.tasks"
+            draggable="true"
+            (dragstart)="onDragStart($event, col, task)">
+
+            <p
+              class="task-text"
+              contenteditable="true"
+              (blur)="onTaskBlur($event, task)">{{ task.text }}</p>
+
+            <div class="task-footer">
+              <span class="task-date">📅 {{ task.date }}</span>
+              <button class="btn-delete-task" (click)="deleteTask(col, task)">✕ Ukloni</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Web programiranje 2025/2026 &nbsp;·&nbsp;
+      Internacionalna poslovno-informaciona akademija Tuzla
+    </footer>
+
+    <!-- Back button -->
+    <button class="back-btn" (click)="goBack()">
+      <span>←</span>
+      <span>Nazad na Fun Zone</span>
+    </button>
+
+  </div>
+
+  <!-- Email overlay -->
+  <div class="overlay" [class.visible]="showEmailPopup">
+    <div class="popup-box">
+      <h3>Pošalji Kanban izvještaj</h3>
+      <p>Unesite e-mail adresu na koju želite poslati trenutno stanje sa ploče.</p>
+      <div class="input-group">
+        <label for="targetEmail">E-mail adresa primatelja</label>
+        <input
+          type="email"
+          id="targetEmail"
+          [(ngModel)]="targetEmail"
+          placeholder="ime.prezime@student.ipi.ba">
+      </div>
+      <div class="popup-buttons">
+        <button class="btn btn-clear" (click)="toggleEmailPopup()">Poništi</button>
+        <button class="btn btn-add" (click)="sendEmail()">Pošalji →</button>
+      </div>
+    </div>
+  </div>
+
+</div>
