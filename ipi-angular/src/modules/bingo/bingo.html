@@ -1,0 +1,71 @@
+<div class="bingo-page">
+
+  <div class="bingo-header">
+    <span class="badge">Student Fun Zone</span>
+    <h1>IT Bingo Kviz</h1>
+    <p class="bingo-subtitle">Odgovorite na pitanja i spojite 5 pojmova za BINGO</p>
+  </div>
+
+  <div class="bingo-layout">
+
+    <!-- Lijeva kolona: pitanje + statistike + dugme -->
+    <div class="question-panel">
+      <div class="question-box" [class.idle]="idle">
+        <div class="panel-label">Trenutno pitanje</div>
+        <p id="currentQuestion">{{ currentQuestionText }}</p>
+      </div>
+
+      <div class="stats-panel">
+        <div class="stat-card">
+          <span class="stat-label">Tačni odgovori</span>
+          <span class="stat-value">{{ score }}</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Preostalo pitanja</span>
+          <span class="stat-value">{{ remainingText }}</span>
+        </div>
+      </div>
+
+      <button *ngIf="!gameStarted" id="startBtn" (click)="initGame()">→ Započni igru</button>
+    </div>
+
+    <!-- Desna kolona: ploča -->
+    <div class="bingo-board-wrapper">
+      <div class="board-label">Bingo ploča</div>
+      <div class="bingo-board">
+        <div
+          class="bingo-cell"
+          *ngFor="let term of cellTerms; let i = index"
+          [class.matched]="boardState[i]"
+          [class.free-space]="i === 12"
+          [class.wrong-flash]="wrongFlash[i]"
+          (click)="handleCellClick(i)">
+          {{ term }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Web programiranje 2025/2026 &nbsp;·&nbsp;
+    Internacionalna poslovno-informaciona akademija Tuzla
+  </footer>
+
+  <!-- Back button -->
+  <button class="back-btn" (click)="goBack()">
+    <span>←</span>
+    <span>Nazad na Fun Zone</span>
+  </button>
+
+  <!-- Win overlay -->
+  <div class="overlay" [class.visible]="showWin">
+    <div class="popup-box">
+      <div class="popup-icon">✦</div>
+      <h2>BINGO!</h2>
+      <p>Čestitamo — uspješno ste spojili liniju od 5 tačnih IT pojmova.</p>
+      <button id="restartBtn" (click)="restart()">↺ Igraj ponovo</button>
+    </div>
+  </div>
+
+</div>
