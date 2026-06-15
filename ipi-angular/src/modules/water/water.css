@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: #f5f5f0;
+  font-family: 'Open Sans', sans-serif;
+  color: #1a2a4a;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Pozadina ── */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(160deg, #0d1b3e 0%, #1a2a4a 55%, #0e2250 100%);
+  overflow: hidden;
+}
+
+.bg::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle at center, rgba(212, 160, 23, 0.12), transparent 65%);
+  top: -200px; right: -150px;
+  animation: pulse-orb 10s ease-in-out infinite alternate;
+}
+
+.bg::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle at center, rgba(30, 80, 160, 0.2), transparent 65%);
+  bottom: -150px; left: -100px;
+  animation: pulse-orb 14s ease-in-out infinite alternate-reverse;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes pulse-orb {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.18) translate(40px, -40px); }
+}
+
+/* ── Wrapper ── */
+.water-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Card ── */
+.water-card {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 6px;
+  border-top: 4px solid #d4a017;
+  padding: 52px 48px 44px;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.08),
+    0 24px 64px rgba(13, 27, 62, 0.45);
+  color: #1a2a4a;
+  text-align: center;
+  animation: card-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Logo ── */
+.card-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  gap: 12px;
+  animation: fade-down 0.5s 0.1s both;
+}
+
+.logo-emblem {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.logo-emblem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo-text { text-align: left; }
+
+.logo-text strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2a4a;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+.logo-text span { font-size: 11px; color: #6b7a99; }
+
+/* ── Heading ── */
+.card-heading {
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #eaedf3;
+  animation: fade-down 0.5s 0.18s both;
+}
+
+.card-heading h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a2a4a;
+  letter-spacing: -0.4px;
+  margin-bottom: 4px;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+
+.subtitle {
+  font-size: 13.5px;
+  color: #6b7a99;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* ── Circle ── */
+.circle-scale-container {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade-up 0.45s 0.22s both;
+}
+
+.circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #f7f8fb;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #dde1ec;
+  z-index: 5;
+  box-shadow: 0 0 0 6px rgba(26, 42, 74, 0.06);
+}
+
+/* Zlatni prsten izvana */
+.circle-scale-container::before {
+  content: '';
+  position: absolute;
+  width: 236px; height: 236px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 160, 23, 0.3);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Plava voda */
+.water-fill {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #4facfe 0%, #1a5fa8 100%);
+  transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+}
+
+.water-wave {
+  position: absolute;
+  top: -20px; left: -50%;
+  width: 200%; height: 40px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 40%;
+  animation: wave 5s infinite linear;
+}
+
+@keyframes wave {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Zlatni ml marker */
+.current-level {
+  position: absolute;
+  right: 8px;
+  background: #d4a017;
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+  z-index: 10;
+  transition: top 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 6px rgba(212, 160, 23, 0.4);
+}
+
+.circle-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  color: #1a2a4a;
+}
+
+.circle-text strong {
+  font-size: 40px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  color: #1a2a4a;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.8);
+  line-height: 1;
+}
+
+.circle-text span {
+  font-size: 12px;
+  color: #6b7a99;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 4px;
+}
+
+.circle-text small {
+  font-size: 10px;
+  font-weight: 700;
+  color: #d4a017;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+  margin-top: 3px;
+}
+
+/* Mjehurići */
+.water-bubbles { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.bubble {
+  position: absolute;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  animation: bubbleUp 4s infinite;
+}
+
+@keyframes bubbleUp {
+  0%   { bottom: 0; opacity: 0; }
+  50%  { opacity: 1; }
+  100% { bottom: 100%; opacity: 0; }
+}
+
+/* ── Message ── */
+.message {
+  font-size: 13px;
+  color: #27ae60;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  margin-bottom: 14px;
+  animation: fade-up 0.3s ease;
+}
+
+/* ── Add buttons ── */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+  animation: fade-up 0.45s 0.28s both;
+}
+
+.buttons button {
+  padding: 14px 5px;
+  border: 1.5px solid #dde1ec;
+  border-radius: 4px;
+  background: #f7f8fb;
+  color: #1a2a4a;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.buttons button::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.15), transparent);
+  transition: left 0.4s ease;
+}
+
+.buttons button:hover::before { left: 140%; }
+
+.buttons button:hover {
+  border-color: #1a2a4a;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 42, 74, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Reset button ── */
+.reset {
+  width: 100%;
+  background: #fff5f5;
+  border: 1.5px solid rgba(192, 57, 43, 0.25);
+  border-radius: 4px;
+  color: #c0392b;
+  padding: 13px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  margin-bottom: 10px;
+  animation: fade-up 0.45s 0.34s both;
+}
+
+.reset:hover {
+  background: #c0392b;
+  color: #fff;
+  border-color: #c0392b;
+}
+
+/* ── Back button ── */
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid #dde1ec;
+  border-radius: 4px;
+  color: #6b7a99;
+  padding: 13px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  animation: fade-up 0.45s 0.38s both;
+}
+
+.back:hover {
+  border-color: #1a2a4a;
+  color: #1a2a4a;
+  background: #f7f8fb;
+}
+
+/* ── Animacije ── */
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .water-card { padding: 32px 20px 28px; }
+  .circle-scale-container { width: 220px; height: 220px; }
+  .circle { width: 190px; height: 190px; }
+}

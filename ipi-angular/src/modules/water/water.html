@@ -1,0 +1,71 @@
+<!-- Pozadina -->
+<div class="bg">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="water-wrapper">
+  <div class="water-card">
+
+    <!-- Logo / branding -->
+    <div class="card-logo">
+      <div class="logo-emblem">
+        <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+      </div>
+      <div class="logo-text">
+        <strong>IPI Akademija Tuzla</strong>
+        <span>Internacionalna poslovno-informaciona akademija</span>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="card-heading">
+      <h2>Unos Vode</h2>
+      <p class="subtitle">Prati dnevni unos vode i ostani hidriran cijeli dan.</p>
+    </div>
+
+    <!-- Circle -->
+    <div class="circle-scale-container">
+      <div class="circle">
+        <div class="water-fill" [style.height.%]="percent()">
+          <div class="water-wave"></div>
+        </div>
+
+        <div class="current-level" [style.top.%]="100 - percent()">
+          {{ current }} ml
+        </div>
+
+        <div class="water-bubbles">
+          <div class="bubble" style="left: 30%; width: 8px; height: 8px; animation-delay: 0s;"></div>
+          <div class="bubble" style="left: 60%; width: 12px; height: 12px; animation-delay: 1s;"></div>
+          <div class="bubble" style="left: 70%; width: 10px; height: 10px; animation-delay: 3s;"></div>
+        </div>
+
+        <div class="circle-text">
+          <strong>{{ percent() | number:'1.0-0' }}%</strong>
+          <span>{{ current }} / {{ dailyGoal }} ml</span>
+          <small>Dnevni cilj</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message -->
+    <p class="message" *ngIf="message">{{ message }}</p>
+
+    <!-- Add buttons -->
+    <div class="buttons">
+      <button (click)="add(200)">+200 ml</button>
+      <button (click)="add(300)">+300 ml</button>
+      <button (click)="add(500)">+500 ml</button>
+    </div>
+
+    <!-- Reset -->
+    <button class="reset" (click)="reset()">Resetuj dan</button>
+
+    <!-- Back -->
+    <button class="back" routerLink="/dashboard">
+      <span>←</span>
+      <span>Nazad na Kontrolnu Tablu</span>
+    </button>
+
+  </div>
+</div>
