@@ -1,0 +1,50 @@
+<div class="bg"><div class="bg-grid"></div></div>
+<div class="wrap"><div class="card">
+  <div class="card-logo">
+    <div class="logo-emblem"><img src="ipi-logo.png" alt="IPI"></div>
+    <div class="logo-text"><strong>IPI Akademija Tuzla</strong><span>Internacionalna poslovno-informaciona akademija</span></div>
+  </div>
+  <div class="card-heading"><h1>📝 Dnevna Refleksija</h1><p class="subtitle">Pregledajte dan, naučene lekcije i planove za sutra</p></div>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-val">{{ reflections.length }}</div><div class="stat-lbl">Dana refleksije</div></div>
+    <div class="stat-box"><div class="stat-val">{{ avgRating() }}/10</div><div class="stat-lbl">Prosječna ocjena</div></div>
+  </div>
+
+  <div class="label">Šta je danas bilo dobro? ✨</div>
+  <textarea placeholder="Uspjesi, lijepi trenuci, postignuća..." [(ngModel)]="wins"></textarea>
+
+  <div class="label">Šta je bio izazov? 💪</div>
+  <textarea placeholder="Problemi, teškoće, šta bih promijenio..." [(ngModel)]="challenges"></textarea>
+
+  <div class="label">Plan za sutra 🎯</div>
+  <textarea placeholder="Prioriteti, ciljevi, fokus za sutra..." [(ngModel)]="tomorrow"></textarea>
+
+  <div class="label">Ocijeni dan ({{ rating }}/10)</div>
+  <div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap">
+    <button *ngFor="let s of stars" (click)="rating=s"
+      style="width:36px;height:36px;border-radius:4px;border:1.5px solid #dde1ec;background:none;cursor:pointer;font-family:'Inter';font-size:13px;font-weight:700;transition:.2s"
+      [style.background]="rating>=s?'#1a2a4a':'#f7f8fb'"
+      [style.color]="rating>=s?'#d4a017':'#6b7a99'"
+      [style.borderColor]="rating>=s?'#1a2a4a':'#dde1ec'">{{ s }}</button>
+  </div>
+
+  <button class="btn-primary" (click)="add()" [disabled]="!wins.trim()">Spremi Refleksiju</button>
+
+  <div class="list">
+    <div class="empty" *ngIf="reflections.length === 0"><div class="empty-icon">📝</div><p>Nema refleksija</p><p style="font-size:12px;opacity:.7">Razmislite o svom danu!</p></div>
+    <div class="item" *ngFor="let r of reflections; let i = index">
+      <div class="item-header">
+        <span class="item-title">📅 {{ r.date }}</span>
+        <span class="badge">{{ r.rating }}/10</span>
+      </div>
+      <div style="font-size:13px;color:#1a2a4a;line-height:1.6;margin-top:6px">
+        <div *ngIf="r.wins"><strong>✨ Dobro:</strong> {{ r.wins }}</div>
+        <div *ngIf="r.challenges" style="margin-top:4px"><strong>💪 Izazov:</strong> {{ r.challenges }}</div>
+        <div *ngIf="r.tomorrow" style="margin-top:4px"><strong>🎯 Sutra:</strong> {{ r.tomorrow }}</div>
+      </div>
+      <button class="btn-del" style="margin-top:10px" (click)="remove(i)">Obriši</button>
+    </div>
+  </div>
+  <button class="back-btn" routerLink="/dashboard">← Nazad na Dashboard</button>
+</div></div>
