@@ -1,0 +1,96 @@
+<!-- Pozadina sa inline stilom — mijenja se odmah -->
+<div class="bg" [style.background]="bgStyle">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="auth-wrap">
+  <div class="card"
+    [style.border-top-color]="cardBorderColor"
+    [style.background]="cardBg"
+    [style.color]="textColor">
+
+    <div class="card-logo">
+      <div class="logo-emblem">
+        <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+      </div>
+      <div class="logo-text">
+        <strong [style.color]="textColor">IPI Akademija Tuzla</strong>
+        <span [style.color]="textMuted">Internacionalna poslovno-informaciona akademija</span>
+      </div>
+    </div>
+
+    <div class="card-heading" [style.border-bottom-color]="fieldBorder">
+      <h1 [style.color]="textColor">Registracija</h1>
+      <p class="subtitle" [style.color]="textMuted">Kreirajte novi nalog za pristup platformi</p>
+    </div>
+
+    <!-- Name -->
+    <div class="field">
+      <input type="text" id="name" [(ngModel)]="name" placeholder=" " autocomplete="name"
+        [style.background]="fieldBg" [style.border-color]="fieldBorder" [style.color]="textColor"/>
+      <label for="name" [style.color]="textMuted">Ime i prezime</label>
+    </div>
+
+    <!-- Email -->
+    <div class="field">
+      <input type="email" id="email" [(ngModel)]="email" placeholder=" " autocomplete="email"
+        [style.background]="fieldBg" [style.border-color]="fieldBorder" [style.color]="textColor"/>
+      <label for="email" [style.color]="textMuted">Email adresa</label>
+    </div>
+
+    <!-- Password -->
+    <div class="field">
+      <input type="password" id="password" [(ngModel)]="password"
+        (input)="checkPasswordStrength()" placeholder=" " autocomplete="new-password"
+        [style.background]="fieldBg" [style.border-color]="fieldBorder" [style.color]="textColor"/>
+      <label for="password" [style.color]="textMuted">Lozinka</label>
+      <div class="strength-bar" *ngIf="password">
+        <div class="strength-fill"
+          [style.width.%]="passwordStrength"
+          [style.background]="passwordStrength >= 75 ? '#2e7d32' : passwordStrength >= 50 ? accentColor : '#c0392b'">
+        </div>
+      </div>
+      <div class="strength-text" *ngIf="password" [style.color]="textMuted">{{ getStrengthText() }}</div>
+    </div>
+
+    <!-- Theme picker -->
+    <div class="theme-section">
+      <p class="theme-label" [style.color]="accentColor">Odaberi temu</p>
+      <div class="theme-grid">
+        <div class="theme-option"
+          *ngFor="let t of themes"
+          [class.selected]="theme === t.key"
+          [style.border-color]="theme === t.key ? accentColor : fieldBorder"
+          [style.box-shadow]="theme === t.key ? '0 0 0 3px ' + accentColor + '33' : 'none'"
+          (click)="selectTheme(t.key)">
+          <div class="theme-preview" [style.background]="t.preview"></div>
+          <span class="theme-name" [style.color]="textColor">{{ t.label }}</span>
+          <span class="theme-check" *ngIf="theme === t.key" [style.color]="accentColor">✓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+    <!-- Submit -->
+    <button class="submit-btn" (click)="submit()" [disabled]="loading"
+      [style.background]="textColor">
+      <span class="submit-btn-accent"
+        [style.background]="'linear-gradient(90deg,' + accentColor + ',' + accentLight + ',' + accentColor + ')'">
+      </span>
+      <span *ngIf="!loading">Registruj se</span>
+      <span *ngIf="loading" class="spinner"></span>
+    </button>
+
+    <div class="footer-info" [style.color]="textMuted">
+      <span>Već imate račun?
+        <span class="login-text" [style.color]="textColor" (click)="goLogin()">Prijavite se</span>
+      </span>
+    </div>
+    <div class="footer-info" style="margin-top: 10px;">
+      <a [style.color]="textMuted" (click)="goBack()">← Povratak na početnu</a>
+    </div>
+
+  </div>
+</div>
