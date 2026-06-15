@@ -1,0 +1,31 @@
+<div class="bg"><div class="bg-grid"></div></div>
+<div class="wrap"><div class="card">
+  <div class="card-logo">
+    <div class="logo-emblem"><img src="ipi-logo.png" alt="IPI"></div>
+    <div class="logo-text"><strong>IPI Akademija Tuzla</strong><span>Internacionalna poslovno-informaciona akademija</span></div>
+  </div>
+  <div class="card-heading"><h1>📚 Planer Učenja</h1><p class="subtitle">Pratite sesije učenja i napredak po predmetima</p></div>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-val">{{ sessions.length }}</div><div class="stat-lbl">Sesija ukupno</div></div>
+    <div class="stat-box"><div class="stat-val">{{ totalHours() }}</div><div class="stat-lbl">Ukupno učenja</div></div>
+  </div>
+
+  <div class="label">Nova sesija učenja</div>
+  <div class="row"><input type="text" placeholder="Predmet / tema..." [(ngModel)]="subject" style="flex:2"><input type="number" placeholder="Min" [(ngModel)]="duration" style="flex:1"></div>
+  <textarea placeholder="Bilješka (opciono)..." [(ngModel)]="note"></textarea>
+  <button class="btn-primary" (click)="add()" [disabled]="!subject">Dodaj Sesiju</button>
+
+  <div class="list">
+    <div class="empty" *ngIf="sessions.length === 0"><div class="empty-icon">📚</div><p>Nema sesija</p><p style="font-size:12px;opacity:.7">Zabilježite svoju prvu sesiju učenja!</p></div>
+    <div class="item" *ngFor="let s of sessions; let i = index">
+      <div class="item-header">
+        <span class="item-title">{{ s.subject }}</span>
+        <span class="badge">{{ s.duration }} min</span>
+      </div>
+      <div class="item-meta">📅 {{ s.date }}<span *ngIf="s.note"> — {{ s.note }}</span></div>
+      <button class="btn-del" (click)="remove(i)">Obriši</button>
+    </div>
+  </div>
+  <button class="back-btn" routerLink="/dashboard">← Nazad na Dashboard</button>
+</div></div>

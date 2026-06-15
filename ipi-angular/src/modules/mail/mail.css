@@ -1,0 +1,50 @@
+/* Pop-up pozadina */
+#mail-popup-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Sam pop-up */
+#mail-popup {
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+#mail-popup input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+#mail-popup button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#send-mail {
+    background: #4caf50;
+    color: white;
+}
+
+#cancel-mail {
+    background: #d9534f;
+    color: white;
+}
