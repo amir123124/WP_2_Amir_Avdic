@@ -1,0 +1,90 @@
+<div class="vb-wrapper">
+
+  <header class="vb-header">
+    <div class="title-zone">
+      <span class="badge">Student Fun Zone</span>
+      <h1>Vision Board</h1>
+      <p>Vizualizirajte svoje ciljeve, ideje i motivaciju</p>
+    </div>
+    <div class="action-buttons">
+      <button class="btn btn-note" (click)="addNote()">＋ Bilješka</button>
+      <button class="btn btn-image" (click)="showImagePopup = true">◎ Slika</button>
+      <button class="btn btn-quote" (click)="addQuote()">❝ Citat</button>
+      <button class="btn btn-pdf" (click)="savePdf()">↓ Snimi PDF</button>
+      <button class="btn btn-mail" (click)="showEmailPopup = true">✉ Pošalji mailom</button>
+      <button class="btn btn-clear" (click)="clearBoard()">✕ Očisti</button>
+      <button class="btn btn-back" (click)="goBack()">← Nazad</button>
+    </div>
+  </header>
+
+  <main class="vb-board" id="visionBoard">
+    <div
+      class="board-item"
+      *ngFor="let item of items"
+      [class.type-note]="item.type === 'note'"
+      [class.type-quote]="item.type === 'quote'"
+      [class.type-image]="item.type === 'image'"
+      [style.--rotation]="item.rotation"
+    >
+      <button class="delete-pin" (click)="deleteItem(item.id)">✕</button>
+
+      <img
+        *ngIf="item.type === 'image'"
+        [src]="item.content"
+        class="board-img"
+        (error)="onImgError($event)"
+      />
+
+      <p
+        *ngIf="item.type !== 'image'"
+        class="item-text"
+        contenteditable="true"
+        (blur)="onTextBlur(item, $event)"
+      >{{ item.content }}</p>
+
+      <div class="item-footer">📌 {{ item.date }}</div>
+    </div>
+
+    <div class="empty-state" *ngIf="items.length === 0">
+      Vaša ploča je prazna — dodajte bilješku, citat ili sliku
+    </div>
+  </main>
+
+  <footer>
+    Web programiranje 2025/2026 &nbsp;·&nbsp;
+    Internacionalna poslovno-informaciona akademija Tuzla
+  </footer>
+
+  <!-- Image popup -->
+  <div class="overlay" *ngIf="showImagePopup" (click)="closeImagePopup($event)">
+    <div class="popup-box">
+      <h3>Dodaj sliku</h3>
+      <p>Odaberite sliku sa računara ili unesite URL adresu.</p>
+      <div class="input-group">
+        <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)"
+          style="color: var(--text-muted); font-size:12px; margin-bottom:12px; width:100%; font-family:'Syne',sans-serif;">
+        <input type="url" [(ngModel)]="imageUrl" placeholder="https://example.com/slika.jpg">
+      </div>
+      <div class="popup-buttons">
+        <button class="btn btn-clear" (click)="showImagePopup = false">Odustani</button>
+        <button class="btn btn-image" (click)="handleAddImage()">Dodaj →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email popup -->
+  <div class="overlay" *ngIf="showEmailPopup" (click)="closeEmailPopup($event)">
+    <div class="popup-box">
+      <h3>Pošalji Vision Board</h3>
+      <p>Unesite e-mail adresu na koju želite poslati sadržaj ploče.</p>
+      <div class="input-group">
+        <input type="email" [(ngModel)]="targetEmail" placeholder="ime.prezime@student.ipi.ba">
+      </div>
+      <div class="popup-buttons">
+        <button class="btn btn-clear" (click)="showEmailPopup = false">Poništi</button>
+        <button class="btn btn-mail" (click)="sendEmail()">Pošalji →</button>
+      </div>
+    </div>
+  </div>
+
+</div>
