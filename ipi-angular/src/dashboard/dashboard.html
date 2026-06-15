@@ -1,0 +1,81 @@
+<!-- Pozadina (identična loginu) -->
+<div class="bg-wrapper">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="scene">
+  <div class="dashboard" #dashboardEl>
+
+    <!-- Header -->
+    <header class="top">
+      <div class="greeting">
+        <span class="greeting-sub">Dashboard</span>
+        <div class="welcome">
+          Dobar {{ timeOfDay }}, <strong>{{ username }}</strong>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="time-chip">
+          <span class="time-dot"></span>
+          <span class="clock">{{ currentTime }}</span>
+        </div>
+        <button class="mode-toggle" (click)="toggleColorMode()" [title]="colorMode === 'dark' ? 'Prebaci na svijetli način' : 'Prebaci na tamni način'">
+          <span *ngIf="colorMode === 'dark'">☀️</span>
+          <span *ngIf="colorMode === 'light'">🌙</span>
+        </button>
+        <button class="logout" (click)="logout()">Odjava</button>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- Moduli -->
+    <div class="section-label">Moduli</div>
+    <section class="grid">
+      <div class="module" *ngFor="let m of modules" (click)="open(m.key)">
+        <span class="arrow">↗</span>
+        <div class="icon-wrap">
+          <span class="icon">{{ m.icon }}</span>
+        </div>
+        <div class="module-info">
+          <span class="title">{{ m.label }}</span>
+          <span class="subtitle">{{ m.desc }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Fun Zone -->
+    <div class="student-funzone-module" (click)="openStudentFunZone()">
+      <div class="funzone-left">
+        <div class="funzone-icon">🎮</div>
+        <div class="funzone-text">
+          <h3>Student Fun Zone</h3>
+          <p>interaktivni sadržaj</p>
+        </div>
+      </div>
+      <div class="funzone-pills">
+        <span class="pill">Bingo</span>
+        <span class="pill">Kviz</span>
+        <span class="pill">Whiteboard</span>
+        <span class="pill">Kanban</span>
+        <span class="pill">Vision Board</span>
+      </div>
+    </div>
+
+    <!-- Command bar -->
+    <div class="command">
+      <div class="cmd-hint">
+        <span class="kbd">⌘</span>
+        <span class="kbd">K</span>
+        <span>brza navigacija</span>
+      </div>
+      <input
+        #cmdInput
+        placeholder="Upiši: navike / san / učenje / fitness / zadaci / finansije..."
+        (keyup.enter)="runCommand(cmdInput.value)"
+      />
+    </div>
+
+  </div>
+</div>
