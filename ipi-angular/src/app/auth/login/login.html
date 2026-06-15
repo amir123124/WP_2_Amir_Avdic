@@ -1,0 +1,68 @@
+<div class="bg">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="auth-wrap">
+  <div class="card">
+
+    <!-- Logo / branding -->
+    <div class="card-logo">
+      <div class="logo-emblem">
+        <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+      </div>
+      <div class="logo-text">
+        <strong>IPI Akademija Tuzla</strong>
+        <span>Internacionalna poslovno-informaciona akademija</span>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="card-heading">
+      <h1>Prijava</h1>
+      <p class="subtitle">Dobrodošli nazad — unesite vaše podatke</p>
+    </div>
+
+    <!-- Email field -->
+    <div class="field">
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        placeholder=" "
+        autocomplete="email"
+      />
+      <label for="email">Email adresa</label>
+    </div>
+
+    <!-- Password field -->
+    <div class="field">
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        placeholder=" "
+        autocomplete="current-password"
+      />
+      <label for="password">Lozinka</label>
+    </div>
+
+    <!-- Error message -->
+    <div class="error-msg" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <!-- Submit button -->
+    <button class="submit-btn" (click)="submit()" [disabled]="loading">
+      <span class="submit-btn-accent"></span>
+      <span *ngIf="!loading">Prijavi se</span>
+      <span *ngIf="loading" class="spinner"></span>
+    </button>
+
+    <!-- Footer links -->
+    <div class="footer-links">
+      <span>Nemate račun? <a (click)="goRegister()">Registrujte se</a></span>
+      <span><a (click)="goBack()">← Početna</a></span>
+    </div>
+
+  </div>
+</div>
