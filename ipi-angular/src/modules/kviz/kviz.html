@@ -1,0 +1,77 @@
+<div class="kviz-page">
+
+  <!-- Header -->
+  <div class="quiz-header">
+    <span class="badge">Student Fun Zone</span>
+    <h1>IT Kviz</h1>
+    <p class="quiz-subtitle">Testirajte znanje iz web programiranja i IT tehnologija</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span class="progress-label">Napredak</span>
+      <span class="question-number">Pitanje {{ currentQuestion + 1 }} od {{ quizData.length }}</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-bar" [style.width.%]="progressPercent"></div>
+    </div>
+  </div>
+
+  <!-- Quiz box -->
+  <div class="quiz-container">
+
+    <div class="quiz-box" *ngIf="!showResults">
+      <div class="question-section">
+        <div class="question-eyebrow">Trenutno pitanje</div>
+        <h2 class="question-text">{{ quizData[currentQuestion].question }}</h2>
+      </div>
+
+      <div class="options-section">
+        <div
+          class="option-card"
+          *ngFor="let option of quizData[currentQuestion].options; let i = index"
+          [attr.data-letter]="letters[i]"
+          [class.correct]="answered && i === quizData[currentQuestion].correct"
+          [class.incorrect]="answered && selectedIndex === i && i !== quizData[currentQuestion].correct"
+          [class.disabled]="answered"
+          (click)="selectOption(i)"
+        >
+          {{ option }}
+        </div>
+      </div>
+
+      <div class="quiz-footer">
+        <span class="score-inline">Bodovi: <span class="score-val">{{ score }}</span></span>
+        <button [disabled]="!answered" (click)="nextQuestion()">Sljedeće →</button>
+      </div>
+    </div>
+
+    <!-- Result box -->
+    <div class="result-box" *ngIf="showResults">
+      <div class="result-top">
+        <div class="result-eyebrow">Rezultat kviza</div>
+        <div class="score-display">
+          <span class="score-percent">{{ scorePercent }}</span>
+          <span class="score-unit">%</span>
+        </div>
+        <p class="result-text">Odgovorili ste tačno na {{ score }} od ukupno {{ quizData.length }} pitanja.</p>
+      </div>
+      <div class="result-bottom">
+        <button id="restartBtn" (click)="restart()">↺ Igraj ponovo</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Web programiranje 2025/2026 &nbsp;·&nbsp;
+    Internacionalna poslovno-informaciona akademija Tuzla
+  </footer>
+
+  <button class="back-btn" (click)="goBack()">
+    <span>←</span>
+    <span>Nazad na Fun Zone</span>
+  </button>
+
+</div>
