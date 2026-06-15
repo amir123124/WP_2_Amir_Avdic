@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popis kurseva - IPI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Logo IPI Akademije -->
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="slike/logo-ipi.png" alt="Kursevi IPI">
+        </a>
+    </div>
+    
+    <!-- Glavna Navigacija -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="index.html">O kursevima</a></li>
+            <li><a href="popis.html" class="active">Popis kurseva</a></li>
+            <li><a href="raspored.html">Raspored kurseva</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            
+            <!-- STUDENT FUN ZONE DROPDOWN -->
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Student Fun Zone ▾</a>
+                <div class="dropdown-content">
+                    <a href="whiteboard/whiteboard.html" target="sadrzaj-okvir">Interaktivni Whiteboard</a>
+                    <a href="visionboard/visualboard.html" target="sadrzaj-okvir">Visual Board</a>
+                    <a href="kanban/kanban.html" target="sadrzaj-okvir">Kanban Board</a>
+                    <a href="Bingo/bingo.html" target="sadrzaj-okvir">Bingo</a>
+                    <a href="Kviz/kviz.html" target="sadrzaj-okvir">Kviz</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sadržaj stranice popisa -->
+    <main class="main-content" id="main-zona">
+        <iframe name="sadrzaj-okvir" id="sadrzajOkvir" src="about:blank" style="display:none;"></iframe>
+        <div id="pocetniSadrzaj">
+        <h2>Popis dostupnih kurseva</h2>
+        <p>IPI Akademija nudi sljedeće obrazovne programe i kurseve:</p>
+        
+        <ul style="line-height: 2;">
+            <li><strong>Osnove računarstva:</strong> Uvod u rad na računaru, MS Office paket, Internet sigurnost.</li>
+            <li><strong>Web razvoj:</strong> HTML5, CSS3, JavaScript osnove, Napredni web dizajn.</li>
+            <li><strong>Sistemska administracija:</strong> Uvod u Linux, Održavanje mrežnih sistema.</li>
+            <li><strong>Baze podataka:</strong> SQL osnove i upravljanje relacionim bazama podataka.</li>
+        </ul>
+        </div>
+    </main>
+    
+    <footer>
+        <hr>
+        <p>&copy; Internacionalna poslovno-informaciona akademija Tuzla</p>
+    </footer>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
