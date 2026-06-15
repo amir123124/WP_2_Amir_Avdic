@@ -1,0 +1,75 @@
+<!-- Pozadina -->
+<div class="bg">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="sleep-wrapper">
+  <div class="sleep-card">
+
+    <!-- Logo / branding -->
+    <div class="card-logo">
+      <div class="logo-emblem">
+        <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+      </div>
+      <div class="logo-text">
+        <strong>IPI Akademija Tuzla</strong>
+        <span>Internacionalna poslovno-informaciona akademija</span>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="card-heading">
+      <h2>Pratioc Sna</h2>
+      <p class="subtitle">Pratite obrasce spavanja i nivo energije</p>
+    </div>
+
+    <!-- Inputs -->
+    <div class="inputs">
+
+      <div class="field">
+        <label>⏱ Trajanje Sna (Sati)</label>
+        <input
+          type="number"
+          [(ngModel)]="hours"
+          placeholder="Unesite broj sati...">
+      </div>
+
+      <div class="field">
+        <label>⭐ Kvalitet Sna</label>
+        <div class="quality-options">
+          <button class="quality-btn" [class.active]="quality === 'Poor'" (click)="quality = 'Poor'">😴 Loš</button>
+          <button class="quality-btn" [class.active]="quality === 'Average'" (click)="quality = 'Average'">😐 Prosječan</button>
+          <button class="quality-btn" [class.active]="quality === 'Good'" (click)="quality = 'Good'">😊 Dobar</button>
+          <button class="quality-btn" [class.active]="quality === 'Deep'" (click)="quality = 'Deep'">💤 Dubok</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Save button -->
+    <button class="save" (click)="save()">
+      <span>💾 Sačuvaj Podatke</span>
+    </button>
+
+    <!-- Result -->
+    <div class="result" *ngIf="hours && quality">
+      <div class="result-row">
+        <span>Ocjena Sna</span>
+        <span class="score-value">{{ calculateSleepScore() }}%</span>
+      </div>
+      <div class="bar">
+        <div class="fill" [style.width.%]="calculateSleepScore()"></div>
+      </div>
+      <p class="result-note">
+        {{ hours < 6 ? '⚠️ Potrebno više odmora.' : '✅ Odličan balans!' }}
+      </p>
+    </div>
+
+    <!-- Back button -->
+    <button class="back" routerLink="/dashboard">
+      <span>←</span>
+      <span>Nazad na Kontrolnu Tablu</span>
+    </button>
+
+  </div>
+</div>
