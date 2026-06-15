@@ -1,0 +1,88 @@
+<div class="funzone-wrapper">
+
+  <div class="bg-wrapper">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <div class="scene">
+    <div class="card">
+
+      <!-- Logo / branding -->
+      <div class="card-logo">
+        <div class="logo-emblem">
+          <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+        </div>
+        <div class="logo-text">
+          <strong>IPI Akademija Tuzla</strong>
+          <span>Internacionalna poslovno-informaciona akademija</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="card-header">
+        <div class="header-text">
+          <h1>Student Fun Zone</h1>
+          <span class="header-sub">Odaberi interaktivnu aktivnost</span>
+        </div>
+        <button class="back-btn" (click)="goBack()">← Nazad</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="pick-label">Aktivnosti</p>
+
+      <div class="modules-grid">
+
+        <div class="module-card" (click)="open('bingo')">
+          <div class="mod-icon"><span class="icon-emoji">🎲</span></div>
+          <div class="mod-info">
+            <span class="mod-name">Bingo</span>
+            <span class="mod-desc">edukativna igra</span>
+          </div>
+          <span class="arrow">↗</span>
+        </div>
+
+        <div class="module-card" (click)="open('kviz')">
+          <div class="mod-icon"><span class="icon-emoji">❓</span></div>
+          <div class="mod-info">
+            <span class="mod-name">Kviz</span>
+            <span class="mod-desc">provjera znanja</span>
+          </div>
+          <span class="arrow">↗</span>
+        </div>
+
+        <div class="module-card" (click)="open('kanban')">
+          <div class="mod-icon"><span class="icon-emoji">📋</span></div>
+          <div class="mod-info">
+            <span class="mod-name">Kanban Board</span>
+            <span class="mod-desc">organizacija zadataka</span>
+          </div>
+          <span class="arrow">↗</span>
+        </div>
+
+        <div class="module-card" (click)="open('whiteboard')">
+          <div class="mod-icon"><span class="icon-emoji">🖊️</span></div>
+          <div class="mod-info">
+            <span class="mod-name">Whiteboard</span>
+            <span class="mod-desc">digitalna tabla</span>
+          </div>
+          <span class="arrow">↗</span>
+        </div>
+
+        <div class="module-card" (click)="open('visionboard')" style="grid-column: span 2;">
+          <div class="mod-icon"><span class="icon-emoji">🎯</span></div>
+          <div class="mod-info">
+            <span class="mod-name">Vision Board</span>
+            <span class="mod-desc">ciljevi i motivacija</span>
+          </div>
+          <span class="arrow">↗</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
