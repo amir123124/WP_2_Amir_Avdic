@@ -1,0 +1,92 @@
+<div class="bg">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="habit-wrap">
+  <div class="habit-card">
+
+    <!-- Logo / branding -->
+    <div class="card-logo">
+      <div class="logo-emblem">
+        <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+      </div>
+      <div class="logo-text">
+        <strong>IPI Akademija Tuzla</strong>
+        <span>Internacionalna poslovno-informaciona akademija</span>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="card-heading">
+      <h1>Pratioc Navika</h1>
+      <p class="subtitle">Gradite moćne rutine kroz male korake svaki dan</p>
+    </div>
+
+    <!-- Add habit section -->
+    <div class="add-section">
+      <div class="input-field-label">Nova navika</div>
+
+      <div class="input-group">
+        <input
+          class="habit-input"
+          type="text"
+          placeholder="Unesite naziv navike..."
+          [(ngModel)]="habitName"
+          maxlength="30">
+
+        <input
+          class="days-input"
+          type="number"
+          placeholder="Dani"
+          [(ngModel)]="targetDays">
+      </div>
+
+      <button
+        class="add-btn"
+        (click)="addHabit()"
+        [disabled]="!habitName || !targetDays">
+        <span class="add-btn-accent"></span>
+        <span>Dodaj Novu Naviku</span>
+      </button>
+    </div>
+
+    <!-- Habits list -->
+    <div class="habits-container">
+
+      <div class="empty" *ngIf="habits.length === 0">
+        <div class="empty-icon">🔥</div>
+        <p>Još nema navika</p>
+        <p style="font-size: 13px; margin-top: 4px; opacity: 0.7;">Započnite gradnju svoje rutine!</p>
+      </div>
+
+      <div class="habit-item" *ngFor="let habit of habits; let i = index">
+        <div class="habit-header">
+          <span class="habit-name">{{ habit.name }}</span>
+          <span class="habit-count">{{ habit.completed }} / {{ habit.target }} dana</span>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="progress(habit)"></div>
+        </div>
+
+        <div class="actions">
+          <button
+            class="done-btn"
+            (click)="markDone(habit)"
+            [disabled]="habit.completed >= habit.target">
+            {{ habit.completed >= habit.target ? '✔ Završeno' : 'Označi kao urađeno' }}
+          </button>
+          <button class="delete-btn" (click)="removeHabit(i)">Obriši</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Back button -->
+    <button class="back-btn" routerLink="/dashboard">
+      <span>←</span>
+      <span>Nazad na Kontrolnu Tablu</span>
+    </button>
+
+  </div>
+</div>
