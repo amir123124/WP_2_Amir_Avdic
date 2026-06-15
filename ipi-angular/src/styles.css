@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+/* ══════════════════════════════════════════
+   CSS TEME — primjenjuju se via data-theme
+   ══════════════════════════════════════════ */
+
+:root,
+[data-theme="dark"] {
+  --theme-bg-1:        #0d1b3e;
+  --theme-bg-2:        #1a2a4a;
+  --theme-bg-3:        #0e2250;
+  --theme-accent:      #d4a017;
+  --theme-accent-light:#f0c040;
+  --theme-card-bg:     #ffffff;
+  --theme-text:        #1a2a4a;
+  --theme-text-muted:  #6b7a99;
+  /* interne */
+  --t-orb-1:           rgba(212, 160, 23, 0.12);
+  --t-orb-2:           rgba(30, 80, 160, 0.20);
+  --t-field-bg:        #f7f8fb;
+  --t-field-bdr:       #dde1ec;
+  --t-shadow:          rgba(13, 27, 62, 0.45);
+  --t-divider:         #eaedf3;
+  --t-module-bg:       #f7f8fb;
+  --t-icon-bg:         #1a2a4a;
+  --t-grid:            rgba(255,255,255,0.025);
+  --t-card-border:     #d4a017;
+}
+
+[data-theme="blue"] {
+  --theme-bg-1:        #03133a;
+  --theme-bg-2:        #1565c0;
+  --theme-bg-3:        #0a3070;
+  --theme-accent:      #42a5f5;
+  --theme-accent-light:#90caf9;
+  --theme-card-bg:     #ffffff;
+  --theme-text:        #0d2137;
+  --theme-text-muted:  #4a6a8a;
+  --t-orb-1:           rgba(66, 165, 245, 0.15);
+  --t-orb-2:           rgba(21, 101, 192, 0.25);
+  --t-field-bg:        #f0f6ff;
+  --t-field-bdr:       #b3d4f5;
+  --t-shadow:          rgba(3, 19, 58, 0.45);
+  --t-divider:         #cce0f5;
+  --t-module-bg:       #f0f6ff;
+  --t-icon-bg:         #1565c0;
+  --t-grid:            rgba(66,165,245,0.04);
+  --t-card-border:     #42a5f5;
+}
+
+[data-theme="green"] {
+  --theme-bg-1:        #071a07;
+  --theme-bg-2:        #1b5e20;
+  --theme-bg-3:        #0a2e0a;
+  --theme-accent:      #43a047;
+  --theme-accent-light:#81c784;
+  --theme-card-bg:     #ffffff;
+  --theme-text:        #0a1f0a;
+  --theme-text-muted:  #4a7a4a;
+  --t-orb-1:           rgba(67, 160, 71, 0.14);
+  --t-orb-2:           rgba(27, 94, 32, 0.22);
+  --t-field-bg:        #f0fff0;
+  --t-field-bdr:       #b2dfb2;
+  --t-shadow:          rgba(7, 26, 7, 0.45);
+  --t-divider:         #c8e6c9;
+  --t-module-bg:       #f0fff0;
+  --t-icon-bg:         #1b5e20;
+  --t-grid:            rgba(67,160,71,0.04);
+  --t-card-border:     #43a047;
+}
+
+[data-theme="rose"] {
+  --theme-bg-1:        #1a0010;
+  --theme-bg-2:        #880e4f;
+  --theme-bg-3:        #2d0020;
+  --theme-accent:      #e91e8c;
+  --theme-accent-light:#f48fb1;
+  --theme-card-bg:     #ffffff;
+  --theme-text:        #2d0018;
+  --theme-text-muted:  #7a3a5a;
+  --t-orb-1:           rgba(233, 30, 140, 0.14);
+  --t-orb-2:           rgba(136, 14, 79, 0.22);
+  --t-field-bg:        #fff0f6;
+  --t-field-bdr:       #f5b8d4;
+  --t-shadow:          rgba(26, 0, 16, 0.45);
+  --t-divider:         #fce4ec;
+  --t-module-bg:       #fff0f6;
+  --t-icon-bg:         #880e4f;
+  --t-grid:            rgba(233,30,140,0.04);
+  --t-card-border:     #e91e8c;
+}
+
+[data-theme="orange"] {
+  --theme-bg-1:        #1a0800;
+  --theme-bg-2:        #bf360c;
+  --theme-bg-3:        #2a0e00;
+  --theme-accent:      #ff9800;
+  --theme-accent-light:#ffcc02;
+  --theme-card-bg:     #ffffff;
+  --theme-text:        #1a0a00;
+  --theme-text-muted:  #7a4a20;
+  --t-orb-1:           rgba(255, 152, 0, 0.14);
+  --t-orb-2:           rgba(191, 54, 12, 0.22);
+  --t-field-bg:        #fff8f0;
+  --t-field-bdr:       #ffcc80;
+  --t-shadow:          rgba(26, 8, 0, 0.45);
+  --t-divider:         #ffe0b2;
+  --t-module-bg:       #fff8f0;
+  --t-icon-bg:         #bf360c;
+  --t-grid:            rgba(255,152,0,0.04);
+  --t-card-border:     #ff9800;
+}
+
+[data-theme="cyberpunk"] {
+  --theme-bg-1:        #050005;
+  --theme-bg-2:        #0f000f;
+  --theme-bg-3:        #000510;
+  --theme-accent:      #ff00ff;
+  --theme-accent-light:#00ffff;
+  --theme-card-bg:     #0d0d0d;
+  --theme-text:        #e0e0e0;
+  --theme-text-muted:  #888888;
+  --t-orb-1:           rgba(255, 0, 255, 0.12);
+  --t-orb-2:           rgba(0, 255, 255, 0.10);
+  --t-field-bg:        #1a001a;
+  --t-field-bdr:       #440044;
+  --t-shadow:          rgba(255, 0, 255, 0.25);
+  --t-divider:         #330033;
+  --t-module-bg:       #120012;
+  --t-icon-bg:         #2a002a;
+  --t-grid:            rgba(255,0,255,0.06);
+  --t-card-border:     #ff00ff;
+}
+
+/* ══════════════════════════════════════════
+   GLOBALNI RESET
+   ══════════════════════════════════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════════
+   POZADINA — koristi temu automatski
+   ══════════════════════════════════════════ */
+
+.bg,
+.bg-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(160deg, var(--theme-bg-1) 0%, var(--theme-bg-2) 55%, var(--theme-bg-3, var(--theme-bg-1)) 100%);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg::before,
+.bg-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle at center, var(--t-orb-1), transparent 65%);
+  top: -200px; right: -150px;
+  animation: pulse-orb 10s ease-in-out infinite alternate;
+}
+
+.bg::after,
+.bg-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle at center, var(--t-orb-2), transparent 65%);
+  bottom: -150px; left: -100px;
+  animation: pulse-orb 14s ease-in-out infinite alternate-reverse;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--t-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--t-grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes pulse-orb {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.18) translate(40px, -40px); }
+}
+
+/* ══════════════════════════════════════════
+   KARTICE — koriste temu automatski
+   ══════════════════════════════════════════ */
+
+.card,
+.dashboard,
+.habit-card,
+.main-card,
+.page-card {
+  background: var(--theme-card-bg) !important;
+  border-top: 4px solid var(--t-card-border) !important;
+  color: var(--theme-text) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 24px 64px var(--t-shadow) !important;
+}
+
+/* ── Tekst boje ── */
+h1, .card-heading h1 {
+  color: var(--theme-text) !important;
+}
+
+.subtitle, .logo-text span {
+  color: var(--theme-text-muted) !important;
+}
+
+.logo-text strong {
+  color: var(--theme-text) !important;
+}
+
+/* ── Accent boja (zlatna linija, labele, sat...) ── */
+.section-label,
+.greeting-sub,
+.theme-label,
+.input-field-label,
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.habit-count,
+.time-dot,
+.add-btn-accent,
+.submit-btn-accent {
+  color: var(--theme-accent) !important;
+}
+
+.add-btn-accent,
+.submit-btn-accent {
+  background: linear-gradient(90deg, var(--theme-accent), var(--theme-accent-light), var(--theme-accent)) !important;
+}
+
+/* ── Progress barovi ── */
+.progress-fill,
+.goal-fill,
+.strength-fill.strong {
+  background: linear-gradient(90deg, var(--theme-text), var(--theme-accent)) !important;
+}
+
+/* ── Dugmad ── */
+.submit-btn,
+.add-btn,
+.done-btn {
+  background: var(--theme-text) !important;
+  color: #ffffff !important;
+}
+
+.submit-btn:hover:not(:disabled),
+.add-btn:hover:not(:disabled),
+.done-btn:hover:not(:disabled) {
+  background: var(--theme-bg-1) !important;
+  box-shadow: 0 8px 24px var(--t-shadow) !important;
+}
+
+/* ── Icon wrap (emoji pozadina) ── */
+.icon-wrap {
+  background: var(--t-icon-bg) !important;
+}
+
+/* ── Input polja ── */
+.field input,
+.field select,
+.field textarea,
+.command input,
+.habit-input,
+.days-input {
+  background: var(--t-field-bg) !important;
+  border-color: var(--t-field-bdr) !important;
+  color: var(--theme-text) !important;
+}
+
+.field input:focus,
+.field textarea:focus,
+.command input:focus,
+.habit-input:focus {
+  border-color: var(--theme-text) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-text) 10%, transparent) !important;
+}
+
+/* ── Modul kartice ── */
+.module,
+.habit-item,
+.session-item,
+.sub-card {
+  background: var(--t-module-bg) !important;
+  border-color: var(--t-field-bdr) !important;
+  color: var(--theme-text) !important;
+}
+
+.module:hover,
+.habit-item:hover {
+  background: var(--theme-card-bg) !important;
+  border-color: var(--theme-text) !important;
+}
+
+.module:hover .arrow { color: var(--theme-accent) !important; }
+.module:hover::before {
+  background: linear-gradient(90deg, transparent, var(--theme-accent), transparent) !important;
+}
+
+/* ── Divider & section linije ── */
+.divider,
+.card-heading,
+.list-section,
+.command {
+  border-color: var(--t-divider) !important;
+}
+
+/* ── Student Fun Zone pills ── */
+.pill {
+  background: color-mix(in srgb, var(--theme-accent) 15%, transparent) !important;
+  border-color: color-mix(in srgb, var(--theme-accent) 30%, transparent) !important;
+  color: var(--theme-accent) !important;
+}
+
+/* ── Logout / Back dugme ── */
+.logout,
+.back-btn,
+.delete-btn {
+  border-color: var(--t-field-bdr) !important;
+  color: var(--theme-text-muted) !important;
+  background: var(--t-field-bg) !important;
+}
+
+.logout:hover { border-color: #c0392b !important; color: #c0392b !important; background: #fff5f5 !important; }
+.back-btn:hover { border-color: var(--theme-text) !important; color: var(--theme-text) !important; }
+
+/* ── KBD shortcut ── */
+.kbd {
+  background: var(--t-field-bg) !important;
+  border-color: var(--t-field-bdr) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+/* ══════════════════════════════════════════
+   CYBERPUNK POSEBNI EFEKTI
+   ══════════════════════════════════════════ */
+
+[data-theme="cyberpunk"] .card,
+[data-theme="cyberpunk"] .dashboard,
+[data-theme="cyberpunk"] .habit-card,
+[data-theme="cyberpunk"] .main-card {
+  box-shadow:
+    0 0 30px rgba(255, 0, 255, 0.20),
+    0 0 60px rgba(0, 255, 255, 0.08) !important;
+}
+
+[data-theme="cyberpunk"] .module:hover {
+  box-shadow: 0 0 16px rgba(255, 0, 255, 0.35) !important;
+  border-color: #ff00ff !important;
+}
+
+[data-theme="cyberpunk"] .submit-btn:hover,
+[data-theme="cyberpunk"] .add-btn:hover {
+  box-shadow: 0 0 24px rgba(255, 0, 255, 0.45) !important;
+}
+
+[data-theme="cyberpunk"] .time-dot {
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.8) !important;
+}
+
+/* ══════════════════════════════════════════
+   ANIMACIJE
+   ══════════════════════════════════════════ */
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
