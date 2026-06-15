@@ -1,0 +1,63 @@
+<div class="wb-wrapper">
+
+  <header class="wb-header">
+    <div class="title-zone">
+      <span class="badge">Student Fun Zone</span>
+      <h1>Interaktivni Whiteboard</h1>
+      <p>Crtajte, skicirajte i vizualizirajte ideje</p>
+    </div>
+    <div class="action-buttons">
+      <div class="toolbar-inline">
+        <label class="tool-label">Boja</label>
+        <input type="color" [value]="currentColor" (input)="onColorChange($event)">
+        <label class="tool-label">Veličina</label>
+        <input type="range" min="1" max="20" [value]="brushSize" (input)="onBrushSizeChange($event)">
+        <button class="btn btn-eraser" [class.btn-eraser--active]="isErasing" (click)="toggleEraser()">
+          {{ isErasing ? '✏ Olovka' : '◻ Brisač' }}
+        </button>
+      </div>
+      <button class="btn btn-save"  (click)="savePng()">↓ PNG</button>
+      <button class="btn btn-pdf"   (click)="savePdf()">↓ PDF</button>
+      <button class="btn btn-mail"  (click)="showEmailPopup = true">✉ Mailom</button>
+      <button class="btn btn-clear" (click)="clearBoard()">✕ Očisti</button>
+      <button class="btn btn-back"  (click)="goBack()">← Nazad</button>
+    </div>
+  </header>
+
+  <main class="wb-board">
+    <canvas
+      #boardCanvas
+      id="board"
+      width="1400"
+      height="700"
+      (mousedown)="startDraw($event)"
+      (mouseup)="endDraw()"
+      (mousemove)="draw($event)"
+      (mouseleave)="endDraw()"
+      (touchstart)="startDraw($event); $event.preventDefault()"
+      (touchend)="endDraw(); $event.preventDefault()"
+      (touchmove)="draw($event); $event.preventDefault()"
+    ></canvas>
+  </main>
+
+  <footer>
+    Web programiranje 2025/2026 &nbsp;·&nbsp;
+    Internacionalna poslovno-informaciona akademija Tuzla
+  </footer>
+
+  <!-- Email popup -->
+  <div class="overlay" *ngIf="showEmailPopup" (click)="closeEmailPopup($event)">
+    <div class="popup-box">
+      <h3>Pošalji Whiteboard</h3>
+      <p>Unesite e-mail adresu na koju želite poslati poruku o crtežu.</p>
+      <div class="input-group">
+        <input type="email" [(ngModel)]="targetEmail" placeholder="ime.prezime@student.ipi.ba">
+      </div>
+      <div class="popup-buttons">
+        <button class="btn btn-clear" (click)="showEmailPopup = false">Poništi</button>
+        <button class="btn btn-save"  (click)="sendEmail()">Pošalji →</button>
+      </div>
+    </div>
+  </div>
+
+</div>
