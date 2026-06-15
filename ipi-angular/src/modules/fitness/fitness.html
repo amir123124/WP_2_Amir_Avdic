@@ -1,0 +1,35 @@
+<div class="bg"><div class="bg-grid"></div></div>
+<div class="wrap"><div class="card">
+  <div class="card-logo">
+    <div class="logo-emblem"><img src="ipi-logo.png" alt="IPI"></div>
+    <div class="logo-text"><strong>IPI Akademija Tuzla</strong><span>Internacionalna poslovno-informaciona akademija</span></div>
+  </div>
+  <div class="card-heading"><h1>🧘 Fitness & Yoga</h1><p class="subtitle">Pratite treninge, jogu i fizičku aktivnost</p></div>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-val">{{ workouts.length }}</div><div class="stat-lbl">Treninga</div></div>
+    <div class="stat-box"><div class="stat-val">{{ totalMin() }}</div><div class="stat-lbl">Minuta ukupno</div></div>
+    <div class="stat-box"><div class="stat-val">{{ totalCal() }}</div><div class="stat-lbl">Kalorija</div></div>
+  </div>
+
+  <div class="label">Novi trening</div>
+  <select [(ngModel)]="type"><option value="" disabled>Odaberi tip treninga...</option><option *ngFor="let t of types" [value]="t">{{ t }}</option></select>
+  <div class="row">
+    <input type="number" placeholder="Trajanje (min)" [(ngModel)]="duration">
+    <input type="number" placeholder="Kalorije" [(ngModel)]="calories">
+  </div>
+  <button class="btn-primary" (click)="add()" [disabled]="!type">Dodaj Trening</button>
+
+  <div class="list">
+    <div class="empty" *ngIf="workouts.length === 0"><div class="empty-icon">🧘</div><p>Nema treninga</p><p style="font-size:12px;opacity:.7">Dodajte svoju prvu aktivnost!</p></div>
+    <div class="item" *ngFor="let w of workouts; let i = index">
+      <div class="item-header">
+        <span class="item-title">{{ w.type }}</span>
+        <span class="badge">{{ w.duration }} min</span>
+      </div>
+      <div class="item-meta">📅 {{ w.date }}<span *ngIf="w.calories"> · 🔥 {{ w.calories }} kcal</span></div>
+      <button class="btn-del" (click)="remove(i)">Obriši</button>
+    </div>
+  </div>
+  <button class="back-btn" routerLink="/dashboard">← Nazad na Dashboard</button>
+</div></div>
