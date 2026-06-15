@@ -1,0 +1,38 @@
+<div class="bg"><div class="bg-grid"></div></div>
+<div class="wrap"><div class="card">
+  <div class="card-logo">
+    <div class="logo-emblem"><img src="ipi-logo.png" alt="IPI"></div>
+    <div class="logo-text"><strong>IPI Akademija Tuzla</strong><span>Internacionalna poslovno-informaciona akademija</span></div>
+  </div>
+  <div class="card-heading"><h1>✅ Planer Zadataka</h1><p class="subtitle">Upravljajte projektima i zadacima na jednom mjestu</p></div>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-val">{{ pending() }}</div><div class="stat-lbl">Na čekanju</div></div>
+    <div class="stat-box"><div class="stat-val">{{ done() }}</div><div class="stat-lbl">Završeno</div></div>
+    <div class="stat-box"><div class="stat-val">{{ tasks.length }}</div><div class="stat-lbl">Ukupno</div></div>
+  </div>
+
+  <div class="label">Novi zadatak</div>
+  <input type="text" placeholder="Naziv zadatka..." [(ngModel)]="title">
+  <div class="row">
+    <input type="text" placeholder="Projekt (opciono)" [(ngModel)]="project">
+    <select [(ngModel)]="priority" style="flex:1;width:auto;min-width:130px"><option *ngFor="let p of priorities" [value]="p">{{ p }}</option></select>
+  </div>
+  <button class="btn-primary" (click)="add()" [disabled]="!title">Dodaj Zadatak</button>
+
+  <div class="list">
+    <div class="empty" *ngIf="tasks.length === 0"><div class="empty-icon">✅</div><p>Nema zadataka</p><p style="font-size:12px;opacity:.7">Dodajte prvi zadatak!</p></div>
+    <div class="item" *ngFor="let t of tasks; let i = index" [class.done]="t.done">
+      <div class="item-header">
+        <span class="item-title">{{ t.title }}</span>
+        <span class="badge" [style.color]="priorityColor(t.priority)" [style.background]="priorityColor(t.priority)+'22'">{{ t.priority }}</span>
+      </div>
+      <div class="item-meta">📅 {{ t.date }}<span *ngIf="t.project"> · 📁 {{ t.project }}</span></div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn-sm" (click)="toggle(t)">{{ t.done ? '↩ Poništi' : '✓ Završi' }}</button>
+        <button class="btn-del" (click)="remove(i)">Obriši</button>
+      </div>
+    </div>
+  </div>
+  <button class="back-btn" routerLink="/dashboard">← Nazad na Dashboard</button>
+</div></div>
