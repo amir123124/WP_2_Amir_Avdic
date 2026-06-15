@@ -1,0 +1,37 @@
+<div class="bg"><div class="bg-grid"></div></div>
+<div class="wrap"><div class="card">
+  <div class="card-logo">
+    <div class="logo-emblem"><img src="ipi-logo.png" alt="IPI"></div>
+    <div class="logo-text"><strong>IPI Akademija Tuzla</strong><span>Internacionalna poslovno-informaciona akademija</span></div>
+  </div>
+  <div class="card-heading"><h1>🙏 Zahvalnost</h1><p class="subtitle">Svaki dan zabilježite nešto lijepo — gradite pozitivan um</p></div>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-val">{{ entries.length }}</div><div class="stat-lbl">Unosa ukupno</div></div>
+  </div>
+
+  <div class="label">Danas sam zahvalan/na za...</div>
+  <textarea placeholder="Napišite za što ste danas zahvalni..." [(ngModel)]="text" style="min-height:100px"></textarea>
+
+  <div class="label" style="margin-top:4px">Raspoloženje danas</div>
+  <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+    <button *ngFor="let m of moods" (click)="mood=m"
+      style="font-size:22px;background:none;border:2px solid transparent;border-radius:8px;padding:6px;cursor:pointer;transition:.2s"
+      [style.borderColor]="mood===m?'#d4a017':'transparent'"
+      [style.background]="mood===m?'rgba(212,160,23,0.12)':'none'">{{ m }}</button>
+  </div>
+
+  <button class="btn-primary" (click)="add()" [disabled]="!text.trim()">Spremi Unos</button>
+
+  <div class="list">
+    <div class="empty" *ngIf="entries.length === 0"><div class="empty-icon">🙏</div><p>Nema unosa</p><p style="font-size:12px;opacity:.7">Zapišite nešto dobro iz danas!</p></div>
+    <div class="item" *ngFor="let e of entries; let i = index">
+      <div class="item-header">
+        <span class="item-title">{{ e.mood }} {{ e.date }}</span>
+        <button class="btn-del" (click)="remove(i)">Obriši</button>
+      </div>
+      <div style="font-size:14px;color:#1a2a4a;line-height:1.6;margin-top:4px">{{ e.text }}</div>
+    </div>
+  </div>
+  <button class="back-btn" routerLink="/dashboard">← Nazad na Dashboard</button>
+</div></div>
