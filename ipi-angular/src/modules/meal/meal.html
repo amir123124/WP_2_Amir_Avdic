@@ -1,0 +1,191 @@
+<div class="bg">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="meal-wrap">
+  <div class="meal-card">
+
+    <!-- Logo / branding -->
+    <div class="card-logo">
+      <div class="logo-emblem">
+        <img src="ipi-logo.png" alt="IPI Akademija Tuzla logo">
+      </div>
+      <div class="logo-text">
+        <strong>IPI Akademija Tuzla</strong>
+        <span>Internacionalna poslovno-informaciona akademija</span>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="card-heading">
+      <h1>Pratioc Ishrane</h1>
+      <p class="subtitle">Planirajte obroke, pratite kalorije i razvijte zdrave navike ishrane</p>
+    </div>
+
+    <!-- Form -->
+    <div class="meal-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <div class="form-label">
+            <span>📝</span>
+            <span>Naziv obroka</span>
+          </div>
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Šta ste jeli? (npr. Pileća salata)"
+            [(ngModel)]="mealName"
+            maxlength="40">
+        </div>
+
+        <div class="form-group">
+          <div class="form-label">
+            <span>🔥</span>
+            <span>Kalorije</span>
+          </div>
+          <input
+            class="form-input"
+            type="number"
+            min="1"
+            max="5000"
+            placeholder="Unesite kalorije"
+            [(ngModel)]="calories"
+            [style.color]="getCalorieColor()">
+        </div>
+      </div>
+
+      <!-- Meal type -->
+      <div class="meal-type-selection">
+        <div class="form-label">
+          <span>⏰</span>
+          <span>Vrsta obroka</span>
+        </div>
+        <div class="meal-type-grid">
+          <div
+            class="meal-type-btn"
+            [class.active]="mealType === 'Breakfast'"
+            (click)="mealType = 'Breakfast'">
+            <div class="meal-type-icon">🍳</div>
+            <div class="meal-type-text">Doručak</div>
+          </div>
+
+          <div
+            class="meal-type-btn"
+            [class.active]="mealType === 'Lunch'"
+            (click)="mealType = 'Lunch'">
+            <div class="meal-type-icon">🥗</div>
+            <div class="meal-type-text">Ručak</div>
+          </div>
+
+          <div
+            class="meal-type-btn"
+            [class.active]="mealType === 'Dinner'"
+            (click)="mealType = 'Dinner'">
+            <div class="meal-type-icon">🍝</div>
+            <div class="meal-type-text">Večera</div>
+          </div>
+
+          <div
+            class="meal-type-btn"
+            [class.active]="mealType === 'Snack'"
+            (click)="mealType = 'Snack'">
+            <div class="meal-type-icon">🍎</div>
+            <div class="meal-type-text">Užina</div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        class="add-meal-btn"
+        (click)="addMeal()"
+        [disabled]="!mealName || !calories || !mealType">
+        <span class="add-meal-btn-accent"></span>
+        <span>Dodaj obrok</span>
+      </button>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-section" *ngIf="meals.length > 0">
+      <div class="summary-header">
+        <div class="summary-title">
+          <span>📊</span>
+          <span>Današnja ishrana</span>
+        </div>
+        <div>
+          <span class="calorie-count">{{ totalCalories() }}</span>
+          <span class="calorie-unit">kcal</span>
+        </div>
+      </div>
+
+      <div class="summary-stats">
+        <div class="stat-item">
+          <span class="stat-value">{{ getMealCount() }}</span>
+          <span class="stat-label">Obroci</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{ getAvgCalories() }}</span>
+          <span class="stat-label">Prosjek kcal</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{ getMostCommonMeal() }}</span>
+          <span class="stat-label">Najčešći</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meals list -->
+    <div class="meals-list">
+      <div class="list-header">
+        <div class="list-title">
+          <span>📋</span>
+          <span>Nedavni obroci</span>
+          <span class="meal-count">{{ meals.length }}</span>
+        </div>
+      </div>
+
+      <div class="empty-meals" *ngIf="meals.length === 0">
+        <div class="empty-icon">🍽️</div>
+        <p>Još nema zabilježenih obroka</p>
+        <p style="font-size: 13px; margin-top: 4px; opacity: 0.7;">Započnite praćenje svoje ishrane</p>
+      </div>
+
+      <div
+        class="meal-item"
+        *ngFor="let m of meals; let i = index"
+        [style.animation-delay]="i * 0.1 + 's'">
+
+        <div class="meal-content">
+          <div class="meal-info">
+            <div class="meal-name">
+              {{ m.name }}
+              <span class="meal-type-tag">{{ m.type }}</span>
+            </div>
+            <div class="meal-date">
+              <span>📅</span>
+              <span>{{ m.date }}</span>
+            </div>
+          </div>
+
+          <div class="meal-calories">
+            <div class="calories-value">{{ m.calories }}</div>
+            <div class="calories-label">Kalorije</div>
+          </div>
+        </div>
+
+        <div class="meal-actions">
+          <button class="delete-meal-btn" (click)="deleteMeal(i)">
+            <span>🗑️</span>
+            <span>Obriši</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back button -->
+    <button class="back-btn" routerLink="/dashboard">
+      <span>←</span>
+      <span>Nazad na Kontrolnu Tablu</span>
+    </button>
+
+  </div>
+</div>
