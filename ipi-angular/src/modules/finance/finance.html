@@ -1,0 +1,41 @@
+<div class="bg"><div class="bg-grid"></div></div>
+<div class="wrap"><div class="card">
+  <div class="card-logo">
+    <div class="logo-emblem"><img src="ipi-logo.png" alt="IPI"></div>
+    <div class="logo-text"><strong>IPI Akademija Tuzla</strong><span>Internacionalna poslovno-informaciona akademija</span></div>
+  </div>
+  <div class="card-heading"><h1>💰 Finansije</h1><p class="subtitle">Pratite prihode i rashode svaki dan</p></div>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-val" style="color:#27ae60">+{{ prihodi() }}</div><div class="stat-lbl">Prihodi (KM)</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:#e74c3c">-{{ rashodi() }}</div><div class="stat-lbl">Rashodi (KM)</div></div>
+    <div class="stat-box"><div class="stat-val" [style.color]="balans()>=0?'#27ae60':'#e74c3c'">{{ balans() }}</div><div class="stat-lbl">Balans (KM)</div></div>
+  </div>
+
+  <div class="label">Nova transakcija</div>
+  <input type="text" placeholder="Opis..." [(ngModel)]="desc">
+  <div class="row">
+    <input type="number" placeholder="Iznos (KM)" [(ngModel)]="amount" style="flex:1">
+    <select [(ngModel)]="type" style="flex:1;width:auto">
+      <option value="prihod">+ Prihod</option>
+      <option value="rashod">- Rashod</option>
+    </select>
+    <select [(ngModel)]="category" style="flex:1;width:auto"><option *ngFor="let c of categories" [value]="c">{{ c }}</option></select>
+  </div>
+  <button class="btn-primary" (click)="add()" [disabled]="!desc || amount<=0">Dodaj Transakciju</button>
+
+  <div class="list">
+    <div class="empty" *ngIf="transactions.length === 0"><div class="empty-icon">💰</div><p>Nema transakcija</p><p style="font-size:12px;opacity:.7">Zabilježite prvu!</p></div>
+    <div class="item" *ngFor="let t of transactions; let i = index">
+      <div class="item-header">
+        <span class="item-title">{{ t.desc }}</span>
+        <span class="badge" [style.color]="t.type==='prihod'?'#27ae60':'#e74c3c'" [style.background]="t.type==='prihod'?'#27ae6022':'#e74c3c22'">
+          {{ t.type === 'prihod' ? '+' : '-' }}{{ t.amount }} KM
+        </span>
+      </div>
+      <div class="item-meta">📅 {{ t.date }} · 🏷️ {{ t.category }}</div>
+      <button class="btn-del" (click)="remove(i)">Obriši</button>
+    </div>
+  </div>
+  <button class="back-btn" routerLink="/dashboard">← Nazad na Dashboard</button>
+</div></div>
