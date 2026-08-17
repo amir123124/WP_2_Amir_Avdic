@@ -20,9 +20,9 @@ Opis staticke HTML stranice
 Do staticke HTML stranice u folderu se pristupa na sljedeci nacin, otvorimo folder WP_2_Amir_Avdic/ u kojem cemo pronaci fajl pod nazivom index.html. Nakon ponalaska koristimo dupli klik misa kako bi pokrenuli fajl koji nas vodi na internet browser koji ucitava prvu pocetnu stranicu projekta. Internet browser nam ucitava stil i izgled HTML CSS i JavaScript fajlova koji cine tu stranicu u cijelini.
 HTML stranica koja je osmisljena na nacin da bude glavna stranica Ipi-akademije je samo tu kao posrednik koji ce nas zapravo odvesti do glavne stranice ove aplikacije a to je dinamicka Angular stranica.
 
-Struktura foldera projekta
+## Struktura foldera projekta
 
-\`\`\`
+```
 WP_2_Amir_Avdic-main/
 ├── index.html, kontakt.html, popis.html, raspored.html
 ├── style.css
@@ -44,7 +44,7 @@ WP_2_Amir_Avdic-main/
             ├── habit/, kanbanboard/, kviz/, mail/, meal/
             ├── mood/, reflection/, sleep/, study/, tasks/
             ├── visionboard/, water/, whiteboard/
-\`\`\`
+```
 
 Login/Register i teme:
 Za Login/Register formu koristena je standardna autentifikacija korisnika. 
