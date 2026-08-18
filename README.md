@@ -3,17 +3,17 @@ Broj indeksa: 0116/23
 Godina studija: Treca 
 
 O projektu:
-Struktura moje aplikacije ima zadatak da kroz jednstavnu staticku HTML stranicu kroz login/register formu da koristnika uputi na dinamičku Angular stranicu. Nakon sto korisnik izvrši registraciju svog profila i ispuni potrebnu login formu u kojoj ima mogucnosti izmjene teme i stila kako ce stranica izgledat, dobija pristup glavnom dashboardu aplikacije. Dashboard aplikacija posujeduje mnostvo modula trackera za pracenje svakodnevnih aktivnosti i navika kroz dan,koji ce pomoci korisniku u ispunjavanju njegovih dnevnih ciljeva. Pored svega dashboard ima opcije poput StudentFunZone stranice koja posjeduje zabavne igre razlicitog tipa. 
+Struktura moje aplikacije ima zadatak da kroz jednostavnu staticku HTML stranicu kroz login/register formu da koristnika uputi na dinamičku Angular stranicu. Nakon sto korisnik izvrši registraciju svog profila i ispuni potrebnu login formu u kojoj ima mogucnosti izmjene teme i stila kako ce stranica izgledat, dobija pristup glavnom dashboardu aplikacije. Dashboard stranica posujeduje mnostvo modula trackera za pracenje svakodnevnih aktivnosti i navika kroz dan,koji ce pomoci korisniku u ispunjavanju njegovih dnevnih ciljeva. Pored svega dashboard ima opcije poput StudentFunZone stranice koja posjeduje zabavne igre razlicitog tipa. 
 
 Način pokretanja projekta:
 Projekat pokrecemo na slijedeci nacin u folderu C:\Users\avdic\Desktop\WP_2_Amir_Avdic-main pokrecemo folder C:\Users\avdic\Desktop\WP_2_Amir_Avdic-main\ipi-angular iz kojeg brisemo putanju foldera iz searchbara i kucamo cmd. Na taj nacin pokrecemo standardnu komandnu konzolu. 
 
-Napomena u slucaju da projekat ima probleme sa pokretanjem ili konflikt verzija paketa potrebno je koristiti sljedece komande:
+Napomena: u slucaju da projekat ima probleme sa pokretanjem ili konflikt verzija paketa, potrebno je koristiti sljedece komande:
 cd ipi-angular
 npm install --legacy-peer-deps
 
 Nakon toga aplikacija ce se pokrenuti:
-Pomocu komande ng serve finalno izvrsavamo pokretanje aplikacije koja je otvara na 
+Pomocu komande ng serve finalno izvrsavamo pokretanje aplikacije koja se otvara na 
 http://localhost:4200 
 
 Opis staticke HTML stranice
@@ -62,7 +62,7 @@ Animacije koje su koristene su jednostavne, prelaskom kursora preko odredjenog m
 Izdvoji bi 2 trakcera koji su mi bili najzanimljivi i koje bi licno ja koristio najvise. 
 
 Tracker Refleksija: Dnevna refleksija je jako vazna za svaku osobu koja zeli da ima uvid o svoji postupcima, desavanjima oko njega. Da na neki nacin uvidi svoje dobre i lose strane.
-Izazovi koji te zadese tog dana i planovi za sutra.
+Izazovi koji osobu zadese tog dana i planovi za sutra.
 Standardna dnevna biljeska sa konkretnim svakodnevnim pitanjima. 
 
 Voda/hidracija: Veoma vazna stavka za mene, kao i za svakog covjeka koji vodi brigu o svom zdravlju. Aplikacija nam kroz odredeni period pruza uvid u naviku unosa tecnosti, pa lakse vidimo koliko zapravo pazimo na hidraciju ili je zapostavljamo.
